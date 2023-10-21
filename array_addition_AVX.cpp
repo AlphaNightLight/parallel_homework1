@@ -7,6 +7,8 @@
 
 #include <chrono>
 
+#include <immintrin.h>
+
 #define N_TRIALS 4
 // To reduce spikes, each n will be retested N_TRIALS times, and an averege will be performed
 
@@ -17,12 +19,12 @@
 using namespace std;
 
 float array_addition(int);
-float routine1(float*, float*, float*, int);
+float routine2(float*, float*, float*, int);
 
 int main()
 {
 	srand(time(NULL));
-	ofstream report_file("report_array_addition.txt");
+	ofstream report_file("report_array_addition_AVX.txt");
 	float execution_time;
 	
 	int i, j;
@@ -74,7 +76,7 @@ float array_addition(int n)
 	cout << endl << endl;
 	/**/
 
-	execution_time = routine1(A, B, C, n);
+	execution_time = routine2(A, B, C, n);
 
 	/* Debug *
 	cout << "C[" << n << "]:";
@@ -96,16 +98,20 @@ float array_addition(int n)
 	return execution_time;
 }
 
-float routine1 (float* A, float* B, float* C, int n)
+float routine2 (float* A, float* B, float* C, int n)
 {
 	int i;
 	float execution_time;
+	__m256 a, b, c;
 
 	//cout << "For loop start" << endl; // Debug
 	auto start_time = chrono::high_resolution_clock::now();
 
-	for (i=0;i<n;++i){
-		C[i] = A[i] + B[i];
+	for (i=0;i<n;i+=8){
+		a = _mm256_loadu_ps(A+i);
+		b = _mm256_loadu_ps(B+i);
+		c = _mm256_add_ps(a, b);
+		_mm256_storeu_ps(C+i, c);
 	}
 
 	auto end_time = chrono::high_resolution_clock::now();

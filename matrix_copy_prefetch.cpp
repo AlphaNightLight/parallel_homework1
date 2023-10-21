@@ -20,12 +20,12 @@
 using namespace std;
 
 float matrix_copy(int, int);
-float routine1(float**, float**, int, int);
+float routine2(float**, float**, int, int);
 
 int main()
 {
 	srand(time(NULL));
-	ofstream report_file("report_matrix_copy.txt");
+	ofstream report_file("report_matrix_copy_prefetch.txt");
 	float execution_time;
 
 	int i, j;
@@ -81,7 +81,7 @@ float matrix_copy(int n, int b)
 	cout << endl;
 	/**/
 
-	execution_time = routine1(M, O, n, b);
+	execution_time = routine2(M, O, n, b);
 
 	/* Debug *
 	cout << "Reverse matrix O:" << endl;
@@ -111,7 +111,7 @@ float matrix_copy(int n, int b)
 	return execution_time;
 }
 
-float routine1(float** M, float** O, int n, int b)
+float routine2(float** M, float** O, int n, int b)
 {
 	int i, j, ib, jb;
 	float execution_time;
@@ -135,9 +135,9 @@ float routine1(float** M, float** O, int n, int b)
 	//cout << "For loop start" << endl; // Debug
 	auto start_time = chrono::high_resolution_clock::now();
 
-	for (i=0;i<a;++i){ // for each block
-		for (j=0;j<a;++j){
-			for (ib=0;ib<b;++ib){ // for each element of the block
+	for (i=0;i<a;++i){ // for each row
+		for (ib=0;ib<b;++ib){
+			for (j=0;j<a;++j){ // for each element of the row
 				for (jb=0;jb<b;++jb){
 					O[(a-1-i)*b+ib][(a-1-j)*b+jb] = M[i*b+ib][j*b+jb];
 				}

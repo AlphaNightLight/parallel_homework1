@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1697842517 source:c:\users\nives\desktop\scuola alex\ice\parallel computing\homework 1\homework1\main.cpp
-	<iostream>
-	<stdlib.h>
-	<time.h>
-	<iomanip>
-	<chrono>
-

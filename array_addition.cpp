@@ -22,7 +22,7 @@ float routine1(float*, float*, float*, int);
 int main()
 {
 	srand(time(NULL));
-	ofstream report_file("report_array_addition.txt");
+	ofstream report_file("report_array_addition.csv");
 	float execution_time;
 	
 	int i, j;
@@ -30,11 +30,13 @@ int main()
 	for (i=0;i<MIN_SIZE-1;++i) n *= 2;
 
 	report_file << fixed << setprecision(6);
+	report_file << "size,time" << endl;
 	for (i=MIN_SIZE;i<=MAX_SIZE;++i){
 		n *= 2;
 		execution_time = 0;
 		for (j=0;j<N_TRIALS;++j) execution_time += array_addition(n) * (1.0 / N_TRIALS);
-		report_file << "size: " << setw(7) << n << ", time: " << execution_time << " s" << endl;
+		//report_file << "size: " << setw(7) << n << ", time: " << execution_time << " s" << endl;
+		report_file << n << "," << execution_time << endl;
 	}
 
 	report_file.close();

@@ -25,7 +25,7 @@ float routine2(float**, float**, int, int);
 int main()
 {
 	srand(time(NULL));
-	ofstream report_file("report_matrix_copy_prefetch.txt");
+	ofstream report_file("report_matrix_copy_prefetch.csv");
 	float execution_time;
 
 	int i, j;
@@ -36,11 +36,13 @@ int main()
 	for (i=0;i<MIN_BLOCK-1;++i) b *= 2;
 
 	report_file << fixed << setprecision(6);
+	report_file << "size,block,time" << endl;
 	for (i=MIN_BLOCK;i<=MAX_BLOCK;++i){
 		b *= 2;
 		execution_time = 0;
 		for (j=0;j<N_TRIALS;++j) execution_time += matrix_copy(n, b) * (1.0 / N_TRIALS);
-		report_file << "size: " << n << ", block: " << setw(3) << b << ", time: " << execution_time << " s" << endl;
+		//report_file << "size: " << n << ", block: " << setw(3) << b << ", time: " << execution_time << " s" << endl;
+		report_file << n << "," << b << "," << execution_time << endl;
 	}
 
 	report_file.close();

@@ -8,12 +8,12 @@ rm -f matrix_copy_prefetch.exe
 rm -f matrix_copy_prefetch_autovectorized.exe
 rm -f matrix_copy_prefetch_reversed.exe
 
-rm -f report_array_addition.txt
-rm -f report_array_addition_AVX.txt
-rm -f report_array_addition_autovectorized.txt
+rm -f report_array_addition.csv
+rm -f report_array_addition_AVX.csv
+rm -f report_array_addition_autovectorized.csv
 
-rm -f report_matrix_copy.txt
-rm -f report_matrix_copy_autovectorized.txt
-rm -f report_matrix_copy_prefetch.txt
-rm -f report_matrix_copy_prefetch_autovectorized.txt
-rm -f report_matrix_copy_prefetch_reversed.txt
+rm -f report_matrix_copy.csv
+rm -f report_matrix_copy_autovectorized.csv
+rm -f report_matrix_copy_prefetch.csv
+rm -f report_matrix_copy_prefetch_autovectorized.csv
+rm -f report_matrix_copy_prefetch_reversed.csv

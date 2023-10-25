@@ -25,5 +25,5 @@ It will also change names to some of them, to avoid conflicts.
 case read alex_pegoraro_227642_homework_1.pdf to understand the structure of the .csv files and be able to read them.
 4. If you want to clean your workspace run clean.sh, it will delete all the executables and the .csv (but not the plots).
 
-Note: this is the way to test all the programs one shot. If you want to benchmrk only a specific one, read alex_pegoraro_227642_homework_1 to understand
+Note: this is the way to test all the programs one shot. If you want to benchmrk only a specific one, read alex_pegoraro_227642_homework_1.pdf to understand
 the peculiarity and the logic of each program.

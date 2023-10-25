@@ -114,5 +114,5 @@ title('Matrix Copy');
 ylabel('time [s]');
 xlabel('size [b]');
 legend('Sequential', 'Autovectorized', 'Prefetch',...
-'Prefetch Autovectorized', 'location', 'northwest');
+'Prefetch Autovectorized', 'location', 'west');
 print('plot_matrix_copy.png','-dpng');
